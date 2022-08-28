@@ -1,0 +1,9 @@
+{
+    "field1": 123,
+    "field2": false,
+    "field3": "Hello, World.",
+    "field4": {
+        "field1": "Hello",
+        "field2": "World"
+    }
+}

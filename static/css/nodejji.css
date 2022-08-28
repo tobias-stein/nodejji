@@ -1,0 +1,256 @@
+.ne-frame {
+    position: relative;
+
+    padding: 0;
+
+    width: 320px;
+    height: 240px;
+
+    overflow: hidden;
+}
+
+/* .ne-renderer {
+    position: relative; 
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%; 
+    height: 100%; 
+
+    overflow: hidden;
+} */
+
+.ne-canvas {
+    margin: 0;
+    padding: 0;
+    
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACABAMAAAAxEHz4AAAAG1BMVEUVFRUWFhYkJCQlJSUzMzMmJiY0NDQxMTEyMjIQl+acAAAAXklEQVR4AWKAA0HyAAOTkrIxCDiHQkAqifSgMWDUgFEDRg1g7wCCFhcgcEsjB4wGIqCdOhYAAAAAGORvPYw9CXQ2AQCADwAAgA8AAIAPAACADwAAgA8AAIAPfgAAAASSCCi35k/7bwAAAABJRU5ErkJggg==);
+    
+    position: absolute;
+    transform-origin: 0 0 0;
+    transform: scale(1.0);
+     
+    left: -25000px; 
+    top: -25000px; 
+    width: 50000px;
+    height: 50000px;
+
+    font-family: Roboto,sans-serif;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    cursor: default;
+    z-index: 0;
+}
+
+.ne-node {
+    position: absolute;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+
+    box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.7);
+
+    cursor: move;
+
+    z-index: 2;
+}
+
+.ne-node.selected {
+    border-color: rgb(255, 137, 2, 1.0);
+    border-width: 2px;
+}
+
+.ne-node .ne-header {
+    padding: 4px 4px;
+
+    color: rgba(255, 255, 255, 1.0);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    background: linear-gradient(90deg,rgba(255, 255, 255, 0.8) 50%,rgba(255, 255, 255, 0.0));
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ne-node .ne-header .ne-header-label {
+    
+}
+
+.ne-node .ne-body {
+    min-height: 16px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.ne-node .ne-body .ne-input {
+    float: left;
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 8px;
+}
+
+.ne-node .ne-body .ne-output {
+    float: right;
+    text-align: right;
+    padding-left: 8px;
+    padding-right: 0px;
+}
+
+.ne-node .ne-body * .ne-pin {
+    padding-bottom: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    cursor: default;
+}
+
+.ne-node .ne-body * .ne-pin:first-child {
+    padding-top: 8px;
+}
+
+.ne-node .ne-body .ne-output .ne-pin {
+    
+    flex-direction: row-reverse;
+}
+
+.ne-node .ne-body * .ne-pin .ne-label {
+    color: rgba(255, 255, 255, 1.0);
+}
+
+.ne-node .ne-body * .ne-pin .ne-value {
+
+    margin: 0px 2px;
+    color: rgba(255, 255, 255, 1.0);
+}
+
+.ne-node .ne-body * .ne-pin .ne-socket {
+
+    margin: 4px;
+
+    width: 8px;
+    height: 8px;
+
+    
+    background-color: rgba(0, 0, 0, 0.0);
+    border-color: rgba(255, 255, 255, 1.0);
+
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+
+    cursor: crosshair;
+}
+
+.ne-node .ne-body * .ne-pin.connected .ne-socket {
+
+    cursor: grabbing;
+}
+
+.ne-node .ne-body * .ne-pin .ne-socket-bg {
+
+    width: 10px; 
+    height: 10px;
+
+    opacity: 0.0;
+    background-color: rgba(255, 255, 255, 1.0);
+
+    border-radius: 50%;
+
+    transform: translateX(-1px) translateY(-1px);
+}
+
+.ne-node .ne-body * .ne-pin.connected .ne-socket-bg {
+
+    opacity: 1.0;
+}
+
+
+.ne-range-select {
+    position: absolute;
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    border-color: rgba(255, 255, 255, 1.0);
+    border-style: solid;
+
+    visibility: hidden;
+
+    z-index: 99;
+}
+
+.ne-link {
+    fill: none;
+    stroke: rgba(255, 255, 255, 1.0);
+    stroke-width: 2px;
+    stroke-linecap: round;
+    
+    z-index: 1;
+}
+
+
+/* CANVAS CONTROLS */
+
+.ne-frame .ne-canvas-zoom-controls {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+
+    margin: 8px;
+    padding: 4px;
+
+    background-color: rgba(0, 0, 0, 0.25);
+    border-color: rgba(0, 0, 0, 0.75);
+
+    z-index: 99;
+}
+
+.ne-frame .ne-canvas-zoom-controls .ne-zoom {
+
+    margin: 0px;
+
+    width: 64px;
+    height: 32px;
+
+    line-height: 32px;
+    color: rgba(255, 255, 255, 1.0);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+
+    text-align: center;
+    text-justify: center;
+}
+
+.ne-frame .ne-canvas-zoom-controls input[type=button] {
+
+    margin: 0px;
+
+    width: 32px;
+    height: 32px;
+}
+
+.ne-frame .ne-canvas-zoom-controls .ne-zoom-in {
+
+}
+
+.ne-frame .ne-canvas-zoom-controls .ne-zoom-out {
+
+}
+
+.ne-frame .ne-canvas-zoom-controls .ne-zoom-reset {
+
+}
