@@ -133,7 +133,7 @@ export class NodifyFrame extends HTMLElement implements IContext
         // Apply external styles to the shadow dom
         const style = document.createElement('link');
         style.setAttribute('rel', 'stylesheet');
-        style.setAttribute('href', `${['localhost', ''].includes(window.location.hostname) ? '..' : 'prod'}/static/css/nodejji.css`);
+        style.setAttribute('href', `${process.env.NODEJJI_PACKAGE_URL}/static/css/nodejji.css`);
 
         // setup DOM hierarchy
         shadow.appendChild(style);
