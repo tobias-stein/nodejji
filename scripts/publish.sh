@@ -1,0 +1,1 @@
+npm run build-prod && npm publish --access public

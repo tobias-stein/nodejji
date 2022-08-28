@@ -1,18 +1,19 @@
 {
-  "name": "nodejji",
-  "version": "0.8.0",
+  "name": "@steint/nodejji",
+  "version": "0.8.2",
   "description": "Nodes and Edges. [ノードとエッジ - Nōdo to ejji]",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "clean": "./scripts/clean.sh",
-    "package": "webpack --mode=production",
-    "build": "npm run clean && npm run package",
+    "build": "npm run clean && webpack --mode=development",
+    "build-prod": "npm run clean && webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tobias Stein",
   "license": "ISC",
   "devDependencies": {
+    "dotenv-webpack": "^8.0.1",
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",
     "webpack": "^5.73.0",
@@ -20,5 +21,22 @@
   },
   "dependencies": {
     "@panzoom/panzoom": "^4.5.0"
-  }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobias-stein/nodejji.git"
+  },
+  "keywords": [
+    "nodes",
+    "edges",
+    "links"
+  ],
+  "bugs": {
+    "url": "https://github.com/tobias-stein/nodejji/issues"
+  },
+  "homepage": "https://github.com/tobias-stein/nodejji#readme"
 }
