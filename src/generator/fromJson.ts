@@ -1,4 +1,4 @@
-import { IContext, INode, ILink, IPin, NodifyType } from "@/types";
+import { IContext, INode, ILink, IPin, NodejjiType } from "@/types";
 import { IGenerator, IGeneratorOutput } from ".";
 import { NodeFactory } from "@/components/nodes";
 import { JsonObjectNode } from "@/components/nodes/JsonObjectNode";
@@ -31,7 +31,7 @@ export class JsonNodeGenerator implements IGenerator
         if(parent !== undefined)
         {
             const link: ILink = {
-                type: NodifyType.Link,
+                type: NodejjiType.Link,
                 uuid: newUUID(),
                 //@ts-ignore
                 output: parent,

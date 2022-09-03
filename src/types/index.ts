@@ -6,7 +6,7 @@ export interface IStateChangeObserver
 
 export type NodeSchemaId = string;
 
-export enum NodifyType 
+export enum NodejjiType 
 {
     Graph = 0,
     Node,
@@ -17,7 +17,7 @@ export enum NodifyType
 export interface Meta 
 {
     readonly uuid:  string;
-    type:           NodifyType;
+    type:           NodejjiType;
 
     meta?:           { [key: string]: string }
 }

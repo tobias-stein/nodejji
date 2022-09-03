@@ -1,5 +1,5 @@
 import { 
-    NodifyType, 
+    NodejjiType, 
     INode, 
     IPin, 
     IODirection,
@@ -11,7 +11,7 @@ import newUUID from "@/utils/uuid";
 export abstract class Node implements INode
 {
     public readonly uuid:   string;
-    public readonly type:   NodifyType;
+    public readonly type:   NodejjiType;
 
     public meta:            { [key: string]: string; } | undefined;
 
@@ -29,7 +29,7 @@ export abstract class Node implements INode
 
     public constructor()
     {
-        this.type = NodifyType.Node;
+        this.type = NodejjiType.Node;
         this.uuid = newUUID();
         this.label = this.uuid;
 
@@ -79,7 +79,7 @@ export class NodeFactory
         }
         else { newNode = new key(...args); }
 
-        if(newNode.type !== NodifyType.Node) { throw new Error(`Resulting type is not a node!`); }
+        if(newNode.type !== NodejjiType.Node) { throw new Error(`Resulting type is not a node!`); }
 
         newNode.x = x;
         newNode.y = y;

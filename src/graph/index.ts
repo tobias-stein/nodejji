@@ -1,4 +1,4 @@
-import { NodifyType, Meta, INode, ILink } from "@/types";
+import { NodejjiType, Meta, INode, ILink } from "@/types";
 import newUUID from "@/utils/uuid";
 
 import { EventEmitter } from "events";
@@ -24,7 +24,7 @@ type NodeId = string;
 export class Graph extends EventEmitter implements Meta
 {
     public readonly uuid: string;
-    public readonly type: NodifyType;
+    public readonly type: NodejjiType = NodejjiType.Graph;
 
     public readonly nodes: { [node: NodeId]: INode };
     public readonly links: { [node: NodeId]: Array<ILink> };
@@ -34,7 +34,7 @@ export class Graph extends EventEmitter implements Meta
         super();
 
         this.uuid = newUUID();
-        this.type = NodifyType.Graph;
+        this.type = NodejjiType.Graph;
         this.nodes = {};
         this.links = {};
     }

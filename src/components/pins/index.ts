@@ -1,11 +1,11 @@
-import { NodifyType, INode, IPin, IODirection, PinArchTypeId, PinValueAccess, PinValueReferenceType, PinValueType, ILink } from "@/types";
+import { NodejjiType, INode, IPin, IODirection, PinArchTypeId, PinValueAccess, PinValueReferenceType, PinValueType, ILink } from "@/types";
 import newUUID from "@/utils/uuid";
 
 
 export abstract class Pin<TDirection extends IODirection = IODirection> implements IPin
 {
     public readonly uuid:       string;
-    public readonly type:       NodifyType;
+    public readonly type:       NodejjiType;
 
     public meta:                { [key: string]: string; } | undefined;
    
@@ -24,7 +24,7 @@ export abstract class Pin<TDirection extends IODirection = IODirection> implemen
 
     public constructor(direction: TDirection, parent: INode, value: PinValueType, accessAs: PinValueAccess)
     {
-        this.type = NodifyType.Pin;
+        this.type = NodejjiType.Pin;
         this.uuid = newUUID();
         this.label = this.uuid;
 
@@ -95,7 +95,7 @@ export class PinFactory
         }
         else { newPin = new key(...args); }
 
-        if(newPin.type !== NodifyType.Pin) { throw new Error(`Resulting type is not a pin!`); }
+        if(newPin.type !== NodejjiType.Pin) { throw new Error(`Resulting type is not a pin!`); }
         
         return newPin;
     }

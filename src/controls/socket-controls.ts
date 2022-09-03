@@ -1,4 +1,4 @@
-import { NodifyType, IContext, ScaledCanvasRect } from '@/types';
+import { NodejjiType, IContext, ScaledCanvasRect } from '@/types';
 
 import { NodifyController } from ".";
 
@@ -298,7 +298,7 @@ export class SocketNodifyController extends NodifyController
         this.context.renderer.canvas.appendChild(svg);
 
         const tmpLink: ILink = {
-            type: NodifyType.Link,
+            type: NodejjiType.Link,
             uuid:   newUUID(),
             //@ts-ignore
             output: isOutput ? this.currentPin! : undefined, 

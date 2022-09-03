@@ -1,4 +1,4 @@
-import { NodifyType, INode, ILink, IRender, ScaledCanvasRect } from "@/types";
+import { NodejjiType, INode, ILink, IRender, ScaledCanvasRect } from "@/types";
 
 import { Graph, GraphEvents } from "@/graph";
 import { renderNode } from "@/renderer/node";
@@ -180,13 +180,13 @@ export class NodifyRenderer implements IRender
 
         switch(element.type)
         {
-            case NodifyType.Node: 
+            case NodejjiType.Node: 
             {
                 this.canvas.removeChild(element.visual);
                 break;
             }
 
-            case NodifyType.Link:
+            case NodejjiType.Link:
             {
                 // note: we must remove the svg parent element not the path element from canvas
                 this.canvas.removeChild(element.visual.parentElement!);
