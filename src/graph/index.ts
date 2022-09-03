@@ -70,9 +70,10 @@ export class Graph extends EventEmitter implements Meta
         const { source, sink } = this.getNodesSafe(link);
 
         this.links[source.uuid] = this.links[source.uuid].filter(_link => _link.uuid !== link.uuid);
-        this.links[sink.uuid] = this.links[source.uuid].filter(_link => _link.uuid !== link.uuid);
-        this.emit(GraphEvents.DelLink, link);
+        this.links[sink.uuid] = this.links[sink.uuid].filter(_link => _link.uuid !== link.uuid);
 
+
+        this.emit(GraphEvents.DelLink, link);
         return this;
     }
 
